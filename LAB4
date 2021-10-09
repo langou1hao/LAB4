@@ -1,0 +1,107 @@
+
+
+<HTML>
+	<HEAD>
+		<TITLE>New Document </TITLE>
+		
+		<SCRIPT LANGUAGE="JavaScript">
+
+
+var flagtime;
+var oldinner;
+var flag=1;
+var num;
+num=new Array(6);
+function init()
+{
+oldinner=bd.innerHTML;
+}
+function start()
+{
+    if(flag==1)
+         {
+			fun();
+			flag=0;
+			}
+     else
+		{
+			fun2();
+			flag=1;
+			}
+}
+function fun()
+{
+		var arr;
+		arr=new Array(6);
+		bd.innerHTML=oldinner;
+		 for(var i=0;i<6;i++)
+			 num[i]=0;
+	    for(var i=0;i<6;i++)
+	    {
+			arr[i]=Math.floor(Math.random()*6+1);
+			num[arr[i]-1]++;
+			}
+		pic1.src="image/"+arr[0]+".jpg";
+		pic2.src="image/"+arr[1]+".jpg";
+		pic3.src="image/"+arr[2]+".jpg";
+		pic4.src="image/"+arr[3]+".jpg";
+		pic5.src="image/"+arr[4]+".jpg";
+		pic6.src="image/"+arr[5]+".jpg";
+		flagtime=setTimeout("fun()",100);
+		
+}
+function fun2()
+{
+    var sijin=0;
+	window.clearTimeout(flagtime);
+	if(num[3]>=4)
+	{
+			if(num[3]==6)
+				bd.innerHTML+="<h1>恭喜！满堂红！</h1>";
+			else if(num[0]==2)
+				bd.innerHTML+="<h1>恭喜！状元插金花！</h1>";
+			else
+				bd.innerHTML+="<h1>恭喜！中状元啦！</h1>";
+		}
+		else
+		{
+			for(var i=0;i<6;i++)
+			{
+				if(num[i]==4)
+				sijin=1;
+				}
+				if(sijin==1)
+				bd.innerHTML+="<h1>恭喜！四进！</h1>";
+				else if(num[0]==1&&num[1]==1&&num[2]==1&&num[3]==1&&num[4]==1&&num[5]==1)
+				bd.innerHTML+="<h1>恭喜！对堂哦！！</h1>";
+				else if(num[3]==3)
+				bd.innerHTML+="<h1>恭喜！三红！</h1>";
+				else if(num[3]==2)
+				bd.innerHTML+="<h1>恭喜！二举！</h1>";
+				else if(num[3]==1)
+				bd.innerHTML+="<h1>恭喜！一秀！</h1>";
+				else
+				bd.innerHTML+="<h1>很可惜，什么都没有。</h1>";
+		}
+	
+}
+
+
+		</SCRIPT>
+	</HEAD>
+	<BODY id="bd" onload="init()" onkeydown="start()" onclick="start()">
+		<div align="center">
+			<table width="37%" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="16%"><img id="pic1" src="image/1.jpg" width="100" height="100"></td>
+					<td width="29%"><img id="pic2" src="image/2.jpg" width="100" height="100"></td>
+					<td width="17%"><img id="pic3" src="image/3.jpg" width="100" height="100"></td>
+					<td width="2%"><img id="pic4" src="image/4.jpg" width="100" height="100"></td>
+					<td width="16%"><img id="pic5" src="image/5.jpg" width="100" height="100"></td>
+					<td width="20%"><img id="pic6" src="image/6.jpg" width="100" height="100"></td>
+				</tr>
+			</table>
+		</div>
+	</BODY>
+</HTML>
+
